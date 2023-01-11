@@ -1,4 +1,4 @@
-#!/bin/sh  
+#!/bin/bassh  
 while true  
 do  
 	echo "Checking for updates..."

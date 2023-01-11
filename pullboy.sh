@@ -10,7 +10,6 @@ do
 	
 
 	# Check if the current branch is up to date with its remote branch
-	# If not, pull the remote branch
 	[ $(git rev-parse HEAD) = $(git ls-remote $(git rev-parse --abbrev-ref @{u} | \
 	sed 's/\// /g') | cut -f1) ] && echo "Up to date" || echo "Outdated"
 	

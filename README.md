@@ -4,6 +4,11 @@ A script I wrote to automatically detect changes and issue a git pull. It detect
 
 ```bash
 #!/bin/bassh  
+
+echo "Starting app as a background process"
+node . & # Run app as a background process
+APP_PID=$! # Capture the process ID of the app
+
 while true  
 do  
 	echo "Checking for updates..."
@@ -16,11 +21,14 @@ do
 	if [[ $out_of_date = true ]]; then
 		echo "Pulling latest changes"
 		git pull
+
+		echo "Restarting app"
+		kill $APP_PID # Kill the app
+		node . & # Run app as a background process
+		APP_PID=$! # Capture the process ID of the new app
 	fi
 	
 	# Wait a minute
 	sleep 60  
 done
 ```
-
-Upon pulling, a different program called [Nodemon](https://github.com/remy/nodemon) detects the file changes and automatically restarts my Discord bot

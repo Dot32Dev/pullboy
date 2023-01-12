@@ -1,4 +1,9 @@
 #!/bin/bassh  
+
+echo "Starting app as a background process"
+node . & # Run app as a background process
+APP_PID=$! # Capture the process ID of the app
+
 while true  
 do  
 	echo "Checking for updates..."
@@ -11,6 +16,11 @@ do
 	if [[ $out_of_date = true ]]; then
 		echo "Pulling latest changes"
 		git pull
+
+		echo "Restarting app"
+		kill $APP_PID # Kill the app
+		node . & # Run app as a background process
+		APP_PID=$! # Capture the process ID of the new app
 	fi
 	
 	# Wait a minute

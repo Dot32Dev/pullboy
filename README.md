@@ -8,6 +8,7 @@ A script I wrote to automatically detect changes and issue a git pull. It detect
 echo "Starting app as a background process"
 node . & # Run app as a background process
 APP_PID=$! # Capture the process ID of the app
+echo $APP_PID 
 
 while true  
 do  
@@ -26,6 +27,7 @@ do
 		kill $APP_PID # Kill the app
 		node . & # Run app as a background process
 		APP_PID=$! # Capture the process ID of the new app
+		echo $APP_PID 
 	fi
 	
 	# Wait a minute

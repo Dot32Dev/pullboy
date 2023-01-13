@@ -3,7 +3,7 @@
 A script I wrote to automatically detect changes and issue a git pull. It detects changes without having to run heavy fetch or pull.
 
 ```bash
-#!/bin/bassh  
+#!/bin/bash  
 
 echo "Starting app as a background process"
 node . & # Run app as a background process

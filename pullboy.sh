@@ -1,4 +1,4 @@
-#!/bin/bassh  
+#!/bin/bash  
 
 echo "Starting app as a background process"
 node . & # Run app as a background process
